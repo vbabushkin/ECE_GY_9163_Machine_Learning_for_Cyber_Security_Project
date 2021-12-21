@@ -116,4 +116,15 @@ This will output:
 ##### With improved fine-pruning:
 `python3 eval.py  IMAGES/clean_test/test_172_17.png  PROJECT_REPAIRED_MODELS/B0_anonymous_2_fp.h5 PROJECT_REPAIRED_MODELS/B_repaired_anonymous_2_fp.h5`
 
+### Discussion
+The aim of this project is to consider several approaches towards defenses against the backdoor atacks and to design a backdoor detector for badnets trained on the YouTube Face dataset. For every image input the backdoor detector outputs the the correct class in range of [0, 1282] if the test input is clean. And it outputs class 1283 if the input is backdoored.
+
+To obtain the a backdoor detector G for badnets first we need to repair the badnet B itself. We decided to adapt the fine-pruning approach due to the good performance it demonstraes against the pruning-aware attacks. First we get  activations from clean validation data, received from the last pooling layer before the FC layers of the badnet B.  The obtained activations are averaged over all samples in validation set and over the first three dimensions resulting in a vector of activations for each of the 60 channels (neurons). Then we arrange the channels in an increasing order according to the averaged activations. Later we will be using these arrangement to prune a channel one in a time, retraining the model on the whole clean validation dataset with fine-tuned parameters. As soon as the number of pruned neurons exceeds the specified threshold (e.g. 50%)  we will stop fine-pruning and save a repaired network B'.
+
+To get a goodnet G we run each test input through both B and B'. If the classification outputs are the same, i.e., class i, the goodnet outputs class i, otherwise it output N+1, which is 1283 in our case (class numbering starts from 0 to 1282, thus there will be 1283 classes in overall).
+
+The fine-pruning approach demonstrated outstanding results on the pruning-aware attack from HW3 -- while the ordinary pruning was not effective the fine-pruning achieves significant drop in attack success rate around 0.2% after pruning 58.3% of neurons which corresponds to pruning the first 35 channels:
+
+![finePruningHw](https://user-images.githubusercontent.com/7853025/147004242-28f51f9a-397b-4d2f-8dee-9c87ce35b038.png)
+
 
