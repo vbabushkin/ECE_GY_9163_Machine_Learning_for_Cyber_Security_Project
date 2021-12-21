@@ -127,4 +127,4 @@ The fine-pruning approach demonstrated outstanding results on the pruning-aware 
 
 ![finePruningHw](https://user-images.githubusercontent.com/7853025/147004242-28f51f9a-397b-4d2f-8dee-9c87ce35b038.png)
 
-
+It allows to achieve the clean classification accuracy for B' afout 89.84% with the attack success rate of 1.9%.
