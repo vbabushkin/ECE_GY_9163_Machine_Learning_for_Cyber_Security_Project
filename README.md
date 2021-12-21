@@ -5,7 +5,11 @@
 ## Vahan Babushkin
 
 ### Project report
+https://github.com/vbabushkin/ECE_GY_9163_Machine_Learning_for_Cyber_Security_Project/blob/main/ECE_GY_9163_PROJECT_REPORT.pdf
+
 ### Project notebooks
+https://github.com/vbabushkin/ECE_GY_9163_Machine_Learning_for_Cyber_Security_Project/blob/main/CODE/strip.ipynb
+https://github.com/vbabushkin/ECE_GY_9163_Machine_Learning_for_Cyber_Security_Project/blob/main/CODE/finePruning.ipynb
 
 
 ### The structure of file directory:
