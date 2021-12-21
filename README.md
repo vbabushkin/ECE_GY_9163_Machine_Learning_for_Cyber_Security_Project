@@ -148,7 +148,7 @@ We recommend using B0 in improved fine-pruning approach only to differentiate be
 
 We also tried the STRIP method to detect the backdoored inputs. The STRIP approach demonstrated  relatively good results for sunglasses trigger but performed poorly on other datasets. We explain it by the low randomness in the data, which is probably attributed to the relative uniformity in triggers used for other datasets, resulting in lower entropies.
 
-![stripPerfTestData](https://user-images.githubusercontent.com/68700549/147009276-2bd291b0-c3b3-4d64-8ed0-d578b13a2bfd.png)
+![stripPerfTestData](https://user-images.githubusercontent.com/7853025/147010397-6724ebad-2b90-4651-8a2c-9b6d633e1e35.png)
 
 While the STRIP approach still allows to achieve the clean classification accuracy around 88% for sunglasses badnet model, its attack success rate is higher than of fine-pruning (9.78% vs 0.69%), which affected our decision to dismiss this defense mechanism in favour of fine-pruning. 
 
