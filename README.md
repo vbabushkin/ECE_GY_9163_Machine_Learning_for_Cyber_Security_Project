@@ -127,4 +127,13 @@ The fine-pruning approach demonstrated outstanding results on the pruning-aware 
 
 ![finePruningHw](https://user-images.githubusercontent.com/7853025/147004242-28f51f9a-397b-4d2f-8dee-9c87ce35b038.png)
 
-It allows to achieve the clean classification accuracy for B' afout 89.84% with the attack success rate of 1.9%.
+It allows to achieve the clean classification accuracy for B' about 89.84% with the attack success rate of 1.9%.
+
+For the project we initially performed a parameters search to determine the optimal learning rate and the number of neurons to prune. We also noticed that for all models the training accuracy increases sharply to almost 90\% after approximately 10 epochs accompanied by the corresponding drops in loss. We found out that for learning rate of $10^{-3}$  pruning about 10\% of channels is enough for all models to achieve low attack success rates with relatively high clean classification accuracies. For all models the fine-pruning allows to produce the repaired models B' that achieve high clean classification accuracies:
+
+![fpBPrimePerfTestData](https://user-images.githubusercontent.com/7853025/147005606-423db722-491f-4305-b3bc-e1d0548b3c1b.png)
+
+
+
+
+
