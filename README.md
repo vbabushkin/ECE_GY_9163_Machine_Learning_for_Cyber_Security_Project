@@ -149,6 +149,10 @@ Since the backdoor detector G compares outputs of B and B' its clean classificat
 
 We recommend using B0 in improved fine-pruning approach only to differentiate between clean and poisoned data and only for cases when the clean classification accuracy for the original badnet is low. For example, for the badnet used in HW3 the ordinary fine-pruning approach is enough, since the clean classification accuracy of B is 98.6% and fine-pruning results in clean classification accuracy of B' around 89.8% with attack success rate of 1.9%, Which leads to the clean classification accuracy for goodnet G is 89.3% and the same attack success rate of 1.9%. 
 
+We also tried the STRIP method to detect the backdoored inputs. The STRIP approach demonstrated  relatively good results for sunglasses trigger but performed poorly on other datasets. We explain it by the low randomness in the data, which is probably attributed to the relative uniformity in triggers used for other datasets, resulting in lower entropies. The result is shown below.
+
+![stripPerfTestData](https://user-images.githubusercontent.com/68700549/147009276-2bd291b0-c3b3-4d64-8ed0-d578b13a2bfd.png)
+
 
 
 
