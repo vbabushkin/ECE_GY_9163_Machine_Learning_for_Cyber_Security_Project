@@ -13,7 +13,7 @@ import matplotlib.font_manager as font_manager
 ########################################################################################################################
 # define path for data and models
 ########################################################################################################################
-data_path = "/"
+data_path = "/Users/vahan/Desktop/NYUAD PhD PROGRAM/COURSES/EL-GY-9163 MACHINE LEARNING FOR CYBER-SECURITY/HW/HW3/"
 #modelName  = "Multitarget"
 #datasetName = "sunglasses"
 
@@ -201,4 +201,168 @@ clb.mappable.set_clim(0.0,100.0)
 clb.ax.set_title('', fontsize=14)  # title on top of colorbar
 plt.savefig(data_path + "/RESULTS/FIGURES/attackSuccessRateTest" + dataPathLoc+".pdf")
 
+########################################################################################################################
+#  create summary plots
+########################################################################################################################
 
+########################################################################################################################
+#  STRIP
+########################################################################################################################
+with open(data_path + "/RESULTS/REPORTS/all_acc_and_asr.pkl",'rb') as fp:
+    allAccAndASR = pickle.load(fp)
+
+N = 5
+ind = np.arange(N)  # the x locations for the groups
+width = 0.3        # the width of the bars
+
+fig = plt.figure(figsize=(8,4))
+ax = fig.add_subplot(111)
+
+yvals = allAccAndASR['test_acc']
+rects1 = ax.bar(ind, yvals, width, color='b', alpha= 0.6)
+zvals = allAccAndASR['attack_rate']
+rects2 = ax.bar(ind+width, zvals, width, color='r',alpha= 0.6)
+
+ax.set_ylabel('Scores', fontsize = 14)
+ax.set_xticks(ind+width/2)
+ax.set_xticklabels( ('sunglasses', 'anonymous1', 'eybrows', 'lipstick','sunglasses') )
+ax.legend( (rects1[0], rects2[0]), ('accuracy', 'attack SR') ,bbox_to_anchor=(1.2, 1), loc='upper right', ncol=1)
+ax.set_title("Performance of the STRIP approach", fontsize = 16, y=1.02)
+
+# Hide the right and top spines
+ax.spines['right'].set_visible(False)
+ax.spines['top'].set_visible(False)
+
+# Only show ticks on the left and bottom spines
+ax.yaxis.set_ticks_position('left')
+ax.xaxis.set_ticks_position('bottom')
+ax.set_ylim([0,100])
+
+def autolabel(rects):
+    for rect in rects:
+        h = rect.get_height()
+        ax.text(rect.get_x()+rect.get_width()/2., 1.02*h, '%.2f'%h,
+                ha='center', va='bottom',fontsize=9)
+
+autolabel(rects1)
+autolabel(rects2)
+trans = ax.get_xaxis_transform()
+ax.annotate('Multi-trigger Multi-target', xy=(3.2, -.12), xycoords=trans, ha="center", va="top")
+ax.plot([1.85,4.45],[-.1,-.1], color="k", transform=trans, clip_on=False)
+fig.tight_layout()
+
+plt.savefig('FIGURES/stripPerfTestData.pdf')
+plt.savefig('FIGURES/stripPerfTestData.png', dpi=400)
+
+
+########################################################################################################################
+# fine pruning B'
+########################################################################################################################
+with open(data_path + "/RESULTS/REPORTS/totalCleanClassificationAccuracy_B_prime.p",'rb') as fp:
+    totalCleanClassificationAccuracy_B_prime = pickle.load(fp)
+with open(data_path + "/RESULTS/REPORTS/totalAttackSuccessRate_B_prime.p",'rb') as fp:
+    totalAttackSuccessRate_B_prime = pickle.load(fp)
+N = 5
+ind = np.arange(N)  # the x locations for the groups
+width = 0.3        # the width of the bars
+
+fig = plt.figure(figsize=(8,4))
+ax = fig.add_subplot(111)
+
+yvals = totalCleanClassificationAccuracy_B_prime
+rects1 = ax.bar(ind, yvals, width, color='b', alpha= 0.6)
+zvals = totalAttackSuccessRate_B_prime
+rects2 = ax.bar(ind+width, zvals, width, color='r',alpha= 0.6)
+
+ax.set_ylabel('Scores', fontsize = 14)
+ax.set_xticks(ind+width/2)
+ax.set_xticklabels( ('sunglasses', 'anonymous1', 'eybrows', 'lipstick','sunglasses') )
+ax.legend( (rects1[0], rects2[0]), ('accuracy', 'attack SR') ,bbox_to_anchor=(1.2, 1), loc='upper right', ncol=1)
+ax.set_title("Performance of the B' model\n(fine-pruning approach, lr = 0.001, 10 epochs)", fontsize = 16, y=1.02)
+
+# Hide the right and top spines
+ax.spines['right'].set_visible(False)
+ax.spines['top'].set_visible(False)
+
+# Only show ticks on the left and bottom spines
+ax.yaxis.set_ticks_position('left')
+ax.xaxis.set_ticks_position('bottom')
+ax.set_ylim([0,100])
+
+def autolabel(rects):
+    for rect in rects:
+        h = rect.get_height()
+        ax.text(rect.get_x()+rect.get_width()/2., 1.02*h, '%.2f'%h,
+                ha='center', va='bottom',fontsize=9)
+
+autolabel(rects1)
+autolabel(rects2)
+trans = ax.get_xaxis_transform()
+ax.annotate('Multi-trigger Multi-target', xy=(3.2, -.12), xycoords=trans, ha="center", va="top")
+ax.plot([1.85,4.45],[-.1,-.1], color="k", transform=trans, clip_on=False)
+fig.tight_layout()
+
+plt.savefig('FIGURES/fpBPrimePerfTestData.pdf')
+plt.savefig('FIGURES/fpBPrimePerfTestData.png', dpi=400)
+
+
+########################################################################################################################
+# improved fine pruning G  G'
+########################################################################################################################
+with open(data_path + "/RESULTS/REPORTS/totalCleanClassificationAccuracy_G.p",'rb') as fp:
+    totalCleanClassificationAccuracy_G = pickle.load(fp)
+with open(data_path + "/RESULTS/REPORTS/totalCleanClassificationAccuracy_G_prime.p", 'rb') as fp:
+    totalCleanClassificationAccuracy_G_prime = pickle.load(fp)
+with open(data_path + "/RESULTS/REPORTS/totalAttackSuccessRate_G.p",'rb') as fp:
+    totalAttackSuccessRate_G = pickle.load(fp)
+with open(data_path + "/RESULTS/REPORTS/totalAttackSuccessRate_G_prime.p",'rb') as fp:
+    totalAttackSuccessRate_G_prime = pickle.load(fp)
+N = 5
+ind = np.arange(N)  # the x locations for the groups
+width = 0.22       # the width of the bars
+
+fig = plt.figure(figsize=(8,4))
+ax = fig.add_subplot(111)
+
+yvals = totalCleanClassificationAccuracy_G
+rects1 = ax.bar(ind, yvals, width, color='b', alpha= 0.6)
+zvals = totalAttackSuccessRate_G
+rects2 = ax.bar(ind+width, zvals, width, color='r',alpha= 0.6)
+kvals = totalCleanClassificationAccuracy_G_prime
+rects3 = ax.bar(ind+2*width, kvals, width, color='midnightblue', alpha= 0.6)
+mvals = totalAttackSuccessRate_G_prime
+rects4 = ax.bar(ind+3*width, mvals, width, color='darkred',alpha= 0.6)
+
+
+ax.set_ylabel('Scores', fontsize = 14)
+ax.set_xticks(ind+1.5*width)
+ax.set_xticklabels( ('sunglasses', 'anonymous1', 'eybrows', 'lipstick','sunglasses') )
+ax.legend( (rects1[0], rects2[0],rects3[0], rects4[0]), ('accuracy (G)', 'attack SR (G)','accuracy (G\')', 'attack SR (G\')') ,bbox_to_anchor=(1.2, 1), loc='upper right', ncol=1)
+ax.set_title("Performance of the fine-pruning G = G(B,B') and improved G' = G(B0,B') \nmodels (lr = 0.001, 10 epochs)", fontsize = 14, y=1.02)
+
+# Hide the right and top spines
+ax.spines['right'].set_visible(False)
+ax.spines['top'].set_visible(False)
+
+# Only show ticks on the left and bottom spines
+ax.yaxis.set_ticks_position('left')
+ax.xaxis.set_ticks_position('bottom')
+ax.set_ylim([0,100])
+
+def autolabel(rects):
+    for rect in rects:
+        h = rect.get_height()
+        ax.text(rect.get_x()+rect.get_width()/2., 1.02*h, '%.2f'%h,
+                ha='center', va='bottom',fontsize=7.5)
+
+autolabel(rects1)
+autolabel(rects2)
+autolabel(rects3)
+autolabel(rects4)
+trans = ax.get_xaxis_transform()
+ax.annotate('Multi-trigger Multi-target', xy=(3.2, -.12), xycoords=trans, ha="center", va="top")
+ax.plot([1.9,4.7],[-.1,-.1], color="k", transform=trans, clip_on=False)
+fig.tight_layout()
+
+plt.savefig('FIGURES/fpGPrimeVsG.pdf')
+plt.savefig('FIGURES/fpGPrimeVsG.png', dpi=400)
