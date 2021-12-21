@@ -42,8 +42,6 @@ https://github.com/vbabushkin/ECE_GY_9163_Machine_Learning_for_Cyber_Security_Pr
     └── anonymous_1_bd_weights.h5
     └── anonymous_2_bd_net.h5
     └── anonymous_2_bd_weights.h5
-└── eval.py // this is the evaluation script
-├── data 
 ├── IMAGES // images in .pdf/.jpg format to test the badnetEval.py script that accepts a test image (in png or jpeg format) and outputs class label in range [0, 1283]
     └── eyebrows_poisoned_multi_target
     └── lipstick_poisoned_multi_target
@@ -63,9 +61,8 @@ https://github.com/vbabushkin/ECE_GY_9163_Machine_Learning_for_Cyber_Security_Pr
     └── RESULTS 
        └── REPORTS // saved pickle files from running the STRIP and fine-pruning scripts
        └── FIGURES //generated figures for project report
-├── FIGURES //Figures saved from the ipybn
 └── eval.py        // this is the evaluation script for .png/.jpeg inputs
-└── MLSec_ProjectReport.pdf   // project report
+└── ECE_GY_9163_PROJECT_REPORT.pdf   // project report
 ```
 ### Running customized eval.py:
 
