@@ -101,7 +101,7 @@ E.g., `python3  eval_anti_repairedNet.py  IMAGES/clean_test/test_29_57.png  PROJ
 This will output:
 
       Badnet predicted label:              29
-      Repaired Network predicted label:    89
+      Anti-Repaired Network predicted label:    89
       Goodnet G predicted label:           29
 
 
