@@ -63,7 +63,7 @@ https://github.com/vbabushkin/ECE_GY_9163_Machine_Learning_for_Cyber_Security_Pr
        └── FIGURES //generated figures for project report
 └── EVALUATION SCRIPT
 	└── eval.py        // this is the evaluation script for the fine-prune and STRIP aprroaches with .png/.jpeg inputs
-	└── eval_anti-RepairedNet.py        // this is the evaluation script for the anti-RepairedNet aprroache with .png/.jpeg inputs
+	└── eval_anti-repairedNet.py        // this is the evaluation script for the anti-RepairedNet aprroache with .png/.jpeg inputs
 └── ECE_GY_9163_PROJECT_REPORT.pdf   // project report
 ```
 ### Running customized eval.py:
