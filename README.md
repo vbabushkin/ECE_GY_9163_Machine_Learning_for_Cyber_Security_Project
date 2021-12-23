@@ -70,7 +70,9 @@ https://github.com/vbabushkin/ECE_GY_9163_Machine_Learning_for_Cyber_Security_Pr
 	└── eval_anti_repairedNet.py        // this is the evaluation script for the anti-RepairedNet aprroache with .png/.jpeg inputs
 └── ECE_GY_9163_PROJECT_REPORT.pdf   // project report
 ```
-### Running customized eval.py for fine-pruning and STRIP defense:
+## There are two instructions here - one for fine-pruning defense and the other for anti-repairedNet defense.
+
+### Running customized eval.py for fine-pruning defense:
 
 According the project instructions, the modified eval.py script should accept a test image (in png or jpeg format), and output a class in range [0, 1283].
 
