@@ -199,8 +199,9 @@ Similarly, the anti-RepairedNet defense is discussed as thus. Rather than conven
 Accordingly, we concluded that by pruning the channels which exhibit good behaviour better than (or in a similar manner as) random perturbations, we can come out with an anti-repairedNet which allows attacks to succeed at a very high rate while achieving very low clean input accuracy. Thus, the excellent discriminatory nature of the anti-repairedNet
 can be leveraged on to propose a backdoor detector G which compares outputs of the badnet and anti-repairedNet. More importantly, since both the badnet and anti-repairedNet allow attacks to succeed due to their high attack success rate and thus outputing the same (correct) label for a poisioned input, (conversely the badnet alone outputs the correct label for a clean input due to its high clean test accuracy while the anti-repairedNet misclassifies a clean input due to its low clean test accuracy), output of the backdoor detector G can be obtained as follows.
 
-			Output  = prediction of the badnet when there is a mismatch between the prediction of the badnet and anti-repairedNet 
-			Output  = 1283 (i.e. N  + 1) when there is a match between the prediction of the badnet and anti-repairedNet
+Output  = prediction of the badnet when there is a mismatch between the prediction of the badnet and anti-repairedNet 
+Output  = 1283 (i.e. N  + 1) when there is a match between the prediction of the badnet and anti-repairedNet
+
 Performance obtained with the proposed anti-repairedNet defense is presented below where it can be seen that the proposed defense generally achieves a very high clean test accuracy while keeping attack success rate relatively very low (especially for sunglasses badnet).
 
 ![Anti-RepairedNet](https://user-images.githubusercontent.com/95593166/147189053-c3209876-3647-43bd-a262-8b043d328d75.png)
@@ -209,4 +210,4 @@ For the sake of completeness of this discussion, we also tried the STRIP method 
 
 ![stripPerfTestData](https://user-images.githubusercontent.com/7853025/147010397-6724ebad-2b90-4651-8a2c-9b6d633e1e35.png)
 
-While the STRIP approach still allows to achieve clean classification accuracy around 88% for sunglasses badnet model, its attack success rate is higher than that of fine-pruning (9.78% vs 0.69%) and anti-repairedNet (9.78% vs 0.69%) defenses, which affected our decision to dismiss this defense mechanism in favour of fine-pruning and anti-repairedNet defenses. 
+While the STRIP approach still allows to achieve clean classification accuracy around 88% for sunglasses badnet model, its attack success rate is higher than that of improved fine-pruning and anti-repairedNet defenses (i.e 9.78% vs 0.09% and 0.08%), which affected our decision to dismiss this defense mechanism in favour of the improved fine-pruning and anti-repairedNet defenses. More so, of our two candidate defense appraoches, the anti-repairedNet defense generally has a high clean success accuracy across all the models (about 83% in the worst case) while the improved fine-pruning defense has the lowest attack success rate (about 4% in the worst case).
