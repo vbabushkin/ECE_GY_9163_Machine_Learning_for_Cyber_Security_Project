@@ -1,6 +1,5 @@
 import keras
 import sys
-import h5py
 import numpy as np
 import cv2
 
@@ -17,16 +16,16 @@ def image_loader(filepath):
 
 
 def main():
-    B = keras.models.load_model(BadNet_filename)
-    B_prime = keras.models.load_model(Anti_RepairedNet_filename)
+    BadNet = keras.models.load_model(BadNet_filename)
+    Anti_RepairedNet = keras.models.load_model(Anti_RepairedNet_filename)
 
     x = image_loader(data_filename)
 
-    yhat = np.argmax(B(x), axis=1)[0]
-    yhat_prime = np.argmax(B_prime(x), axis=1)[0]
+    yhat = np.argmax(BadNet(x), axis=1)[0]
+    yhat_prime = np.argmax(Anti_RepairedNet(x), axis=1)[0]
 
     if yhat != yhat_prime:
-        res= yhat
+        res = yhat
     else:
         res= 1283
     print(
