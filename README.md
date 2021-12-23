@@ -70,9 +70,9 @@ https://github.com/vbabushkin/ECE_GY_9163_Machine_Learning_for_Cyber_Security_Pr
 	└── eval_anti_repairedNet.py        // this is the evaluation script for the anti-RepairedNet aprroache with .png/.jpeg inputs
 └── ECE_GY_9163_PROJECT_REPORT.pdf   // project report
 ```
-## There are two instructions here - one for fine-pruning defense and the other for anti-repairedNet defense.
+# There are two instructions here - one for fine-pruning defense and the other for anti-repairedNet defense.
 
-### Running customized eval.py for fine-pruning defense:
+## Running customized eval.py for fine-pruning defense:
 
 According the project instructions, the modified eval.py script should accept a test image (in png or jpeg format), and output a class in range [0, 1283].
 
@@ -129,7 +129,7 @@ This will output:
 ##### With improved fine-pruning:
 `python3 eval.py  IMAGES/clean_test/test_172_17.png  PROJECT_REPAIRED_MODELS/B0_anonymous_2_fp.h5 PROJECT_REPAIRED_MODELS/B_repaired_anonymous_2_fp.h5`
 
-### Running customized eval.py for anti-repairedNet defense:
+## Running customized eval.py for anti-repairedNet defense:
 
 According the project instructions, the modified eval.py script should accept a test image (in png or jpeg format), and output a class in range [0, 1283].
 
@@ -138,14 +138,29 @@ The modified evaluation script (saved as eval_anti_repairedNet.py) accepts a tes
 To evaluate the repaired backdoored model (goodnet G) on a test image (in png or jpeg format), execute [`eval_anti_repairedNet.py`](eval_anti_repairedNet.py) by running:  
       `python3 eval_anti_repairedNet.py <path to a test image> <badnet /processed badnet model directory> <repaired model directory>`.
       
-E.g., `python3  eval_anti_repairedNet.py  IMAGES/clean_test/test_29_57.png  PROJECT_REPAIRED_MODELS/B0_multitarget_fp.h5 PROJECT_REPAIRED_MODELS/Anti_RepairedNet_Multi_Trigger_Multi_Target_Model.h5`. 
+E.g., `python3  eval_anti_repairedNet.py  IMAGES/clean_test/test_29_57.png  models/multi_trigger_multi_target_bd_net.h5 PROJECT_REPAIRED_MODELS/Anti_RepairedNet_Multi_Trigger_Multi_Target_Model.h5`. 
       
 This will output:
 
       Badnet predicted label:                   29
       Anti-Repaired Network predicted label:    89
       Goodnet G predicted label:                29
-     
+
+#### Running Repaired Model for sunglasses_bd_net:
+`python3 eval.py  IMAGES/cl/test_272_230.png  models/sunglasses_bd_net.h5 PROJECT_REPAIRED_MODELS/Anti_RepairedNet_Sunglasses_Model.h5`
+
+#### Running Repaired Model for multi_trigger_multi_target_bd_net:
+`python3 eval.py  IMAGES/sunglasses_poisoned_multi_target/test_8_75_50.png  models/multi_trigger_multi_target_bd_net.h5` PROJECT_REPAIRED_MODELS/Anti_RepairedNet_Multi_Trigger_Multi_Target_Model.h5`
+
+`python3 eval.py  IMAGES/lipstick_poisoned_multi_target/test_1_1028_82.png  models/multi_trigger_multi_target_bd_net.h5` PROJECT_REPAIRED_MODELS/Anti_RepairedNet_Multi_Trigger_Multi_Target_Model.h5`
+
+`python3 eval.py  IMAGES/eyebrows_poisoned_multi_target/test_5_290_41.png  models/multi_trigger_multi_target_bd_net.h5` PROJECT_REPAIRED_MODELS/Anti_RepairedNet_Multi_Trigger_Multi_Target_Model.h5`
+
+#### Running Repaired Model for anonymous_1_bd_net:
+`python3 eval.py  IMAGES/clean_test/test_172_17.png  models/anonymous_1_bd_net.h5 PROJECT_REPAIRED_MODELS/Anti_RepairedNet_Anonymous1_Model.h5`
+
+#### Running Repaired Model for anonymous_2_bd_net:
+`python3 eval.py  IMAGES/clean_test/test_172_17.png  models/anonymous_2_bd_net.h5 PROJECT_REPAIRED_MODELS/Anti_RepairedNet_Anonymous2_Model.h5`
 
 ### Discussion
 The aim of this project is to consider several approaches towards defenses against the backdoor atacks and to design a backdoor detector for badnets trained on the YouTube Face dataset. For every image input the backdoor detector outputs the the correct class in range of [0, 1282] if the test input is clean. And it outputs class 1283 if the input is backdoored.
