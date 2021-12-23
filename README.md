@@ -197,10 +197,10 @@ Similarly, the anti-RepairedNet defense is discussed as thus. Rather than conven
 ![Perturbed](https://user-images.githubusercontent.com/95593166/147188524-7aa5de86-2fdf-434b-b9e2-9b69251c6be5.png)
 
 Accordingly, we concluded that by pruning the channels which exhibit good behaviour better than (or in a similar manner as) random perturbations, we can come out with an anti-repairedNet which allows attacks to succeed at a very high rate while achieving very low clean input accuracy. Thus, the excellent discriminatory nature of the anti-repairedNet
-can be leveraged on to propose a backdoor detector G which compares outputs of the badnet and anti-repairedNet. More importantly, since both the badnet and anti-repairedNet allow attacks to succeed due to their high attack success rate and thus outputing the same (correct) label for a poisioned input, (conversely the badnet alone outputs the correct label for a clean input due to its high clean test accuracy while the anti-repairedNet misclassifies a clean input due to its low clean test accuracy), output of the backdoor detector G can be obtained as follows.
+can be leveraged upon to propose a backdoor detector G which compares outputs of the badnet and anti-repairedNet. More importantly, since both the badnet and anti-repairedNet allow attacks to succeed due to their high attack success rate and thus outputing the same (correct) label for a poisioned input, (conversely the badnet alone outputs the correct label for a clean input due to its high clean test accuracy while the anti-repairedNet misclassifies a clean input due to its low clean test accuracy), output of the backdoor detector G can be obtained as follows.
 
-Output  = prediction of the badnet when there is a mismatch between the prediction of the badnet and anti-repairedNet 
-Output  = 1283 (i.e. N  + 1) when there is a match between the prediction of the badnet and anti-repairedNet
+	Output  = prediction of the badnet when there is a mismatch between the prediction of the badnet and anti-repairedNet 
+	Output  = 1283 (i.e. N  + 1) when there is a match between the prediction of the badnet and anti-repairedNet
 
 Performance obtained with the proposed anti-repairedNet defense is presented below where it can be seen that the proposed defense generally achieves a very high clean test accuracy while keeping attack success rate relatively very low (especially for sunglasses badnet).
 
