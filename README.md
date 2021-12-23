@@ -61,7 +61,7 @@ https://github.com/vbabushkin/ECE_GY_9163_Machine_Learning_for_Cyber_Security_Pr
     └── Anti_RepairedNet_Multi_Trigger_Multi_Target_Model.h5    //repaired model for multi_trigger_multi_target_bd_net
     └── Anti_RepairedNet_Anonymous1_Model.h5   		        //repaired model for anonymous_1_bd_net
     └── Anti_RepairedNet_Anonymous2_Model.h5              	//repaired model for anonymous_2_bd_net
-├── CODE //python script for fine-pruning and image generation, ipybn for STRIP and fine-pruning 
+├── CODE //python script for fine-pruning and image generation, ipybn for STRIP, fine-pruning and ANTI-REPAIREDNETs
     └── RESULTS 
        └── REPORTS // saved pickle files from running the STRIP and fine-pruning scripts
        └── FIGURES //generated figures for project report
