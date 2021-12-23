@@ -29,7 +29,7 @@ def main():
     else:
         res= 1283
     print(
-        "Badnet predicted label: {0:>21d}\nAnti-Repaired Network predicted label: {1:>5d}\nGoodnet G predicted label: {2:>18d}".format(
+        "Badnet predicted label: {0:>20d}\nAnti-Repaired Network predicted label: {1:>5d}\nGoodnet G predicted label: {2:>17d}".format(
             yhat, yhat_prime, res))
     return res
 
